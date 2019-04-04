@@ -47,16 +47,7 @@ public class Greet {
     }
 
     public void Counter() {
-        // return the list of users
-//        if (hash.containsKey(username)) {
-//            Map name = new HashMap();
-//            for (hash username : name) {
-//
-//
-//            }
-//        } else {
-//            this.hash.size();
-//        }
+
     }
 
     public void Clear() {
