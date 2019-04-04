@@ -1,7 +1,2 @@
-net/greet/Clear.class
+net/greet/GreetInterface.class
 net/greet/Greet.class
-net/greet/Exit.class
-net/greet/Counter.class
-net/greet/Help.class
-net/greet/Main.class
-net/greet/Greeted.class

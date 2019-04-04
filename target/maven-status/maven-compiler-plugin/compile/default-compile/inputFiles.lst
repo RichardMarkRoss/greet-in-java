@@ -1,7 +1,2 @@
-/home/coder/IdeaProjects/greet-in-java/src/main/java/net/greet/Help.java
 /home/coder/IdeaProjects/greet-in-java/src/main/java/net/greet/Greet.java
-/home/coder/IdeaProjects/greet-in-java/src/main/java/net/greet/Clear.java
-/home/coder/IdeaProjects/greet-in-java/src/main/java/net/greet/Greeted.java
-/home/coder/IdeaProjects/greet-in-java/src/main/java/net/greet/Counter.java
-/home/coder/IdeaProjects/greet-in-java/src/main/java/net/greet/Exit.java
-/home/coder/IdeaProjects/greet-in-java/src/main/java/net/greet/Main.java
+/home/coder/IdeaProjects/greet-in-java/src/main/java/net/greet/GreetInterface.java

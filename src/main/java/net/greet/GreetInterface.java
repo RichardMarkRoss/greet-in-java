@@ -1,9 +1,9 @@
-package net.greet.commands;
+package net.greet;
 
 public interface GreetInterface {
     void Greet(String name, String language);
-    int Greeted(String name);
-    int Counter();
+    void Greeted(String name);
+    void Counter();
     void Clear(String name);
     String Help();
     void Exit();
