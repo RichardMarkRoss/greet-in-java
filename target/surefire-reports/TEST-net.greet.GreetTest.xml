@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="GreetTest" time="0.032" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="net.greet.GreetTest" time="0.026" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -17,7 +17,7 @@
     <property name="user.country" value="ZA"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
-    <property name="sun.java.command" value="/home/coder/IdeaProjects/greet-in-java/target/surefire/surefirebooter6476259530352222106.jar /home/coder/IdeaProjects/greet-in-java/target/surefire 2019-04-08T16-40-00_634-jvmRun1 surefire8425969855155100259tmp surefire_09115673651720696038tmp"/>
+    <property name="sun.java.command" value="/home/coder/IdeaProjects/greet-in-java/target/surefire/surefirebooter2331812181220908452.jar /home/coder/IdeaProjects/greet-in-java/target/surefire 2019-04-10T15-12-41_084-jvmRun1 surefire6394785208240319568tmp surefire_03536629280383382186tmp"/>
     <property name="surefire.test.class.path" value="/home/coder/IdeaProjects/greet-in-java/target/test-classes:/home/coder/IdeaProjects/greet-in-java/target/classes:/home/coder/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.4.0/junit-jupiter-api-5.4.0.jar:/home/coder/.m2/repository/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar:/home/coder/.m2/repository/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar:/home/coder/.m2/repository/org/junit/platform/junit-platform-commons/1.4.0/junit-platform-commons-1.4.0.jar:/home/coder/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.4.0/junit-jupiter-engine-5.4.0.jar:/home/coder/.m2/repository/org/junit/platform/junit-platform-engine/1.4.0/junit-platform-engine-1.4.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/home/coder"/>
@@ -30,13 +30,13 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/coder/IdeaProjects/greet-in-java/target/surefire/surefirebooter6476259530352222106.jar"/>
+    <property name="surefire.real.class.path" value="/home/coder/IdeaProjects/greet-in-java/target/surefire/surefirebooter2331812181220908452.jar"/>
     <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="1.8.0_201-b09"/>
     <property name="user.name" value="coder"/>
     <property name="path.separator" value=":"/>
-    <property name="os.version" value="4.15.0-46-generic"/>
+    <property name="os.version" value="4.15.0-47-generic"/>
     <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/endorsed"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
@@ -58,5 +58,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="ShouldTestGreet" classname="GreetTest" time="0.014"/>
+  <testcase name="ShouldTestIfNameisStoredinVar" classname="net.greet.GreetTest" time="0.009"/>
+  <testcase name="ShouldTestIfNameStoredinMap" classname="net.greet.GreetTest" time="0.006"/>
+  <testcase name="ShouldTestlangIsStoredinVar" classname="net.greet.GreetTest" time="0.001"/>
+  <testcase name="ShouldTestIfMultipalNamesStoredinMap" classname="net.greet.GreetTest" time="0"/>
 </testsuite>
