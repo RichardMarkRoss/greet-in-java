@@ -1,2 +1,8 @@
-net/greet/GreetInterface.class
+net/greet/Clear.class
 net/greet/Greet.class
+net/greet/GreetInterface.class
+net/greet/Help.class
+net/greet/Main.class
+net/greet/DataBaseMig.class
+net/greet/Count.class
+net/greet/Greeted.class
