@@ -1,5 +1,5 @@
-create table username_table {
-    int primary key id not null,
-    varchar(40) username,
-    int count
-}
+create table multiple_user(
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    username varchar,
+    counter int
+);

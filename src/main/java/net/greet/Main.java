@@ -31,16 +31,14 @@ public class Main implements GreetInterface {
         return null;
     }
 
-
     public static void main(String[] args) {
-
         Scanner insert = new Scanner(System.in);
         Greet method = new DataBaseMig();
         System.out.println("type help for more commands");
-
-        while (!insert.toString().equals("exit")) {
-
-            String userInput = insert.nextLine();
+        String userInput = "";
+        while (!userInput.equals("exit")) {
+            
+            userInput = insert.nextLine();
             String[] elements = userInput.split("\\s");
 
             if (elements[0].equals("greet")) {
@@ -52,7 +50,7 @@ public class Main implements GreetInterface {
 
             } else if (elements[0].equals("greeted")) {
                 String userIn = elements[1];
-                if (userIn.equals(null)){
+                if (userIn == null){
                     method.greetedAll();
                 } else {
                     method.greeted(userIn);
@@ -66,10 +64,12 @@ public class Main implements GreetInterface {
                 method.counter();
 
             } else {
-                System.out.println("please type help to view valid commands");
+                System.out.println("=================================>");
             }
         }
 
         System.out.println("Thank you for your time!");
     }
+
+
 }
