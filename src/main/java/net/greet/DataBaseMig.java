@@ -2,17 +2,16 @@ package net.greet;
 
 import java.sql.*;
 
-public class DataBaseMig extends Main{
-    final String INSERT_USER_SQL = "insert into user_count_data (username, counter) values(?, ?)";
+public abstract class DataBaseMig extends Main {
+    final String INSERT_USER_SQL = "insert into multiple_user (username, counter) values(?, ?)";
     final String COUNT_USER_SQL = "select count(*) From user_count_data";
-    final String UPDATE_USER_SQL = "update user_count_data set counter = ? where username = ?";
-    final String SELECT_USER_SQL = "select username From user_count_data where username = ?";
+    final String UPDATE_USER_SQL = "update multiple_user set counter = ? where username = ?";
+    final String SELECT_USER_SQL = "select username From multiple_user where username = ?";
     Connection conn;
     PreparedStatement psCreateNewUser;
     PreparedStatement psCountUsers;
     PreparedStatement psUpdateUser;
     PreparedStatement psSelectUser;
-    Greet greet = new Greet();
 
     public void JdbcGreetUser() {
         try {
@@ -22,18 +21,10 @@ public class DataBaseMig extends Main{
             psCountUsers = conn.prepareStatement(COUNT_USER_SQL);
             psUpdateUser = conn.prepareStatement(UPDATE_USER_SQL);
             psSelectUser = conn.prepareStatement(SELECT_USER_SQL);
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public void insertIntoTable() {
-        try{
-                psCreateNewUser.setString(1, greet.username);
-                psCreateNewUser.setInt(2, greet.counterForUser);
-                psCreateNewUser.execute();
-        } catch(SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
+    public abstract void greetedAll();
 }

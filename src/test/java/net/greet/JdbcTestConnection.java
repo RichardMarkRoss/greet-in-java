@@ -3,9 +3,7 @@ package net.greet;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.*;
 
 import static java.sql.DriverManager.getConnection;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -37,7 +35,6 @@ public class JdbcTestConnection {
 
     @Test
     public void connectToDatabase() { //connect url / Connection
-
         try {
             Class.forName("org.h2.Driver");
             conn = getConnection("jdbc:h2:./db/user_count", "sa", "");

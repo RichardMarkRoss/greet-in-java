@@ -1,11 +1,48 @@
 package net.greet;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main implements GreetInterface {
-    Map<String, Integer> hash = new HashMap<String, Integer>();
+
+
+ public static void main(String[] args) {
+        Scanner insert = new Scanner(System.in);
+
+        Greet method = new Greet();
+        System.out.println("type help for more commands");
+        String userInput = "";
+
+        while (!userInput.equals("exit")) {
+            userInput = insert.nextLine();
+            String[] elements = userInput.split("\\s");
+
+            if (elements[0].equals("greet")) {
+                method.greet(userInput);
+            }
+            if (elements[0].equals("help")) {
+                method.help();
+            }
+            if(elements[0].equals("greeted") && elements[1].isEmpty()) {
+                method.greetedAll();
+            }
+
+            if(elements[0].equals("greeted")) {
+                String userIn = elements[1];
+                method.greeted(userIn);
+            }
+
+            if (elements[0].equals("clear")) {
+                System.out.println("Clear user :");
+                method.clear(elements[1]);
+            }
+            if (elements[0].equals("count")) {
+                System.out.println("Count user :");
+                method.counter();
+            }
+        }
+        System.out.println("Thank you for your time!");
+    }
+
 
     public void greet(String name) {
 
@@ -28,48 +65,6 @@ public class Main implements GreetInterface {
     }
 
     public String help() {
-        return null;
+        return help();
     }
-
-    public static void main(String[] args) {
-        Scanner insert = new Scanner(System.in);
-        Greet method = new DataBaseMig();
-        System.out.println("type help for more commands");
-        String userInput = "";
-        while (!userInput.equals("exit")) {
-            
-            userInput = insert.nextLine();
-            String[] elements = userInput.split("\\s");
-
-            if (elements[0].equals("greet")) {
-
-                method.greet(userInput);
-
-            } else if (elements[0].equals("help")) {
-                method.help();
-
-            } else if (elements[0].equals("greeted")) {
-                String userIn = elements[1];
-                if (userIn == null){
-                    method.greetedAll();
-                } else {
-                    method.greeted(userIn);
-                }
-            } else if (elements[0].equals("clear")) {
-                System.out.println("Clear user :");
-                method.clear(elements[1]);
-
-            } else if (elements[0].equals("count")) {
-                System.out.println("Count user :");
-                method.counter();
-
-            } else {
-                System.out.println("=================================>");
-            }
-        }
-
-        System.out.println("Thank you for your time!");
-    }
-
-
 }

@@ -1,36 +1,29 @@
 package net.greet;
 
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.HashMap;
+import java.util.Map;
 
-public class Greet extends DataBaseMig {
-    String username;
-    String language;
+public class Greet implements GreetInterface {
+    Map<String, Integer> hash = new HashMap<String, Integer>();
+    String username = "";
+    private String language = "";
     int counterForUser;
-//    ResultSet results;
+
     @Override
     public void greet(String name) {
         String[] elements = name.split("\\s");
         this.username = elements[1];
         this.language = elements[2];
 
-            try {
-                ResultSet rsDataBase = psSelectUser.executeQuery();
-                if(rsDataBase.next()) {
-                    psCreateNewUser.setString(1, username);
-                    psCreateNewUser.setInt(2, 1);
-                    psCreateNewUser.execute();
-                }else{
-                    int Count = rsDataBase.getInt("counter");
-                    psUpdateUser.setString(1, username);
-                    psUpdateUser.setInt(2, ++Count);
-                    psUpdateUser.execute();
-                }
-            }catch (Exception e){
-                System.out.println(e);
+        if (!hash.containsKey(username)) {
+            this.hash.put(username, 0);
+        }
+
+        if (!language.equals("") && hash.containsKey(username)) {
+            int counterForUser = this.hash.get(username);
+            counterForUser++;
+            this.hash.put(username, counterForUser);
+        }
 
             if (language.equals("english")) {
                 System.out.println("Hello " + username);
@@ -39,38 +32,30 @@ public class Greet extends DataBaseMig {
             } else if (language.equals("xhosa")) {
                 System.out.println("Molo" + username);
             }
+
             System.out.println("your name has been successfully greeted!");
-        }
+
     }
 
     @Override
     public void greeted(String username) {
-        String Username = username;
-//        hash.get(Username).equals(Username);
-//        int mapSize = hash.get(Username);
-//        System.out.println(Username + " has been greeted: " + mapSize);
-    try{
-      if(!Username.equals(null)) {
-          psCountUsers.executeQuery();
-      }else{
-
-      }
-    }catch(SQLException e){
-        System.out.println(e);
+        try {
+            hash.get(username).equals(username);
+            int mapSize = hash.get(username);
+            System.out.println(username + " has been greeted: " + mapSize);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    @Override
     public void greetedAll() {
-
+        String key;
+        int value;
         for (HashMap.Entry<String, Integer> entry : hash.entrySet()) {
-            String key = entry.getKey();
-            System.out.println(key);
-            Integer value = entry.getValue();
-            System.out.println(value);
+            key = entry.getKey();
+            value = entry.getValue();
             System.out.println(value + " has been greeted " + key + " times");
         }
-
     }
 
     @Override
@@ -99,5 +84,4 @@ public class Greet extends DataBaseMig {
             hash.clear();
         }
     }
-
 }
