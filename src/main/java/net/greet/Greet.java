@@ -70,6 +70,7 @@ public class Greet implements GreetInterface {
                 "clear- followed by a username delete the greet counter for the specified user and decrement the greet counter by 1,\n" +
                 "exit- exits the application,\n" +
                 "help- shows a user an overview of all possible commands.";
+        System.out.println(help);
         return help;
     }
 

@@ -18,7 +18,7 @@ public class GreetDataBase implements GreetInterface {
     PreparedStatement psSelectUser;
     Greet greet = new Greet();
 
-    public void JdbcGreetUser() {
+    public void jdbcGreetUser() {
         try {
             conn = DriverManager.
                     getConnection("jdbc:h2:./db/user_count", "sa", "");
@@ -45,7 +45,6 @@ public class GreetDataBase implements GreetInterface {
         String[] elements = name.split("\\s");
         this.username = elements[1];
         this.language = elements[2];
-
         try {
             ResultSet rsDataBase = psSelectUser.executeQuery();
             if (rsDataBase.next()) {

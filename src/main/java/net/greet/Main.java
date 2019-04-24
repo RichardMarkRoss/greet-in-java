@@ -8,7 +8,7 @@ public class Main implements GreetInterface {
     public static void main(String[] args) {
         Scanner insert = new Scanner(System.in);
 
-        Greet method = new Greet();
+        GreetDataBase method = new GreetDataBase();
         System.out.println("type help for more commands");
         String userInput = "";
 
@@ -16,7 +16,7 @@ public class Main implements GreetInterface {
         while (!userInput.equals("exit")) {
             userInput = insert.nextLine();
             String[] elements = userInput.split("\\s");
-            String userIn = elements[1];
+
 
 
             if (elements[0].equals("greet")) {
@@ -25,16 +25,17 @@ public class Main implements GreetInterface {
             if (elements[0].equals("help")) {
                 method.help();
             }
-            if (elements[0].equals("greeted")) {
-                if (!userIn.equals(elements[1])){
+            if (elements[0].equals("greeted")){
+                if (elements[1].length() == 0){
                     method.greetedAll();
                 } else {
+                    String userIn = elements[1];
                     method.greeted(userIn);
                 }
             }
             if (elements[0].equals("clear")) {
                 System.out.println("Clear user :");
-                method.clear(userIn);
+                method.clear(elements[1]);
             }
             if (elements[0].equals("count")) {
                 System.out.println("Count user :");
@@ -64,8 +65,8 @@ public class Main implements GreetInterface {
     public void clear(String name) {
 
     }
-
     public String help() {
-        return help();
+        return null;
     }
+
 }
