@@ -24,8 +24,6 @@ public class GreetDataBaseTest {
         GreetDataBase greetDataBase = new GreetDataBase();
         greetDataBase.help();
     }
-//
-//
 //    @Test
 //    public void ShouldTestIfNameStoredinMap() {
 //        DataBaseMig greet = new DataBaseMig();

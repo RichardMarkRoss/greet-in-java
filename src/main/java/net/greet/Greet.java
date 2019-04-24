@@ -47,14 +47,16 @@ public class Greet implements GreetInterface {
             e.printStackTrace();
         }
     }
-
-    public void greetedAll() {
-        String key;
-        int value;
-        for (HashMap.Entry<String, Integer> entry : hash.entrySet()) {
-            key = entry.getKey();
-            value = entry.getValue();
-            System.out.println(value + " has been greeted " + key + " times");
+    @Override
+    public void greetedAll(){
+        try {
+            for (HashMap.Entry<String, Integer> entry : hash.entrySet()) {
+                String key = entry.getKey();
+                int value = entry.getValue();
+                System.out.println(value + " has been greeted " + key + " times");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 
