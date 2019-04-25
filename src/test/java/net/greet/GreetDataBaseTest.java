@@ -6,19 +6,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GreetDataBaseTest {
 
-    @Test
-    public void ShouldTestIfNameisStoredinVar() {
-        GreetDataBase greetDataBase = new GreetDataBase();
-        greetDataBase.greet("greetDataBase richard english");
-        assertEquals(greetDataBase.username, "richard");
-    }
-
-    @Test
-    public void ShouldTestlangIsStoredinVar(){
-        GreetDataBase greetDataBase = new GreetDataBase();
-        greetDataBase.greet("greetDataBase tabang afrikaans");
-        assertEquals(greetDataBase.language, "afrikaans");
-    }
+//    @Test
+//    public void ShouldTestIfNameisStoredinVar() {
+//        Greet greetDataBase = new Greet();
+//        greetDataBase.greet("greet richard english");
+//        assertEquals(greetDataBase.username, "richard");
+//    }
+//
+//    @Test
+//    public void ShouldTestlangIsStoredinVar(){
+//        Greet greetDataBase = new Greet();
+//        greetDataBase.greet("greet tabang afrikaans");
+//        assertEquals(greetDataBase.language, "afrikaans");
+//    }
     @Test
     public void shouldTestGreetedForNameLength(){
         GreetDataBase greetDataBase = new GreetDataBase();

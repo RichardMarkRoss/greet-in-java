@@ -10,10 +10,7 @@ public class Greet implements GreetInterface {
     int counterForUser;
 
     @Override
-    public void greet(String name) {
-        String[] elements = name.split("\\s");
-        this.username = elements[1];
-        this.language = elements[2];
+    public void greets(String username, String language) {
 
         if (!hash.containsKey(username)) {
             this.hash.put(username, 0);
@@ -35,6 +32,20 @@ public class Greet implements GreetInterface {
 
             System.out.println("your name has been successfully greeted!");
 
+    }
+
+    public void greet(String name){
+        if (!hash.containsKey(name)) {
+            this.hash.put(name, 0);
+        }
+
+        if (hash.containsKey(name)) {
+            int counterForUser = this.hash.get(name);
+            counterForUser++;
+            this.hash.put(name, counterForUser);
+        }
+        System.out.println("Hello " + name);
+        System.out.println("your name has been successfully greeted!");
     }
 
     @Override

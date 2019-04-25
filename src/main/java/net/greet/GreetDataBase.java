@@ -31,34 +31,28 @@ public class GreetDataBase implements GreetInterface {
         }
     }
 
-    public void insertIntoTable() {
-        try{
-            psCreateNewUser.setString(1, greet.username);
-            psCreateNewUser.setInt(2, greet.counterForUser);
-            psCreateNewUser.execute();
-        } catch(SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
+
     @Override
-    public void greet(String name) {
-        String[] elements = name.split("\\s");
-        this.username = elements[1];
-        this.language = elements[2];
+    public void greets(String name, String language) {
+        this.language = language;
         try {
-            ResultSet rsDataBase = psSelectUser.executeQuery();
-            if (rsDataBase.next()) {
-                psCreateNewUser.setString(1, username);
+//            psSelectUser.setString(1,username);
+//            ResultSet rsDataBase = psSelectUser.executeQuery();
+//            System.out.println(rsDataBase);
+//            if (rsDataBase.next()) {
+                psCreateNewUser.setString(1, name);
                 psCreateNewUser.setInt(2, 1);
                 psCreateNewUser.execute();
-                System.out.println(username + " has been passed in database!");
-            } else {
-                counting = rsDataBase.getInt("counter");
-                psUpdateUser.setString(1, username);
-                psUpdateUser.setInt(2, ++counting);
-                psUpdateUser.execute();
-                System.out.println(username + " name has been updated in database!");
-            }
+//                ResultSet rsDataBase = psSelectUser.executeQuery();
+//                System.out.println(rsDataBase);
+                System.out.println(name + " has been passed in database!");
+//            } else {
+//                counting = rsDataBase.getInt("counter");
+//                psUpdateUser.setString(1, username);
+//                psUpdateUser.setInt(2, ++counting);
+//                psUpdateUser.execute();
+//                System.out.println(username + " name has been updated in database!");
+//            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -71,12 +65,14 @@ public class GreetDataBase implements GreetInterface {
             System.out.println("Molo" + username);
         }
     }
+    public void greet(String username){
+
+    }
 
     @Override
     public void greeted(String username) {
-        String username1 = username.toString();
         try {
-            if (!username1.equals("")) {
+            if (!username.equals("")) {
                 psCountUsers.executeQuery();
             } else {
                 PreparedStatement psReturnAll = conn.prepareStatement("select count(*) from multiple_user");

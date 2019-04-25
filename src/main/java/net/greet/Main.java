@@ -8,7 +8,7 @@ public class Main implements GreetInterface {
     public static void main(String[] args) {
         Scanner insert = new Scanner(System.in);
 
-        GreetDataBase method = new GreetDataBase();
+        Greet method = new Greet();
         System.out.println("type help for more commands");
         String userInput = "";
 
@@ -17,34 +17,40 @@ public class Main implements GreetInterface {
             userInput = insert.nextLine();
             String[] elements = userInput.split("\\s");
 
-
-
-            if (elements[0].equals("greet")) {
-                method.greet(userInput);
-            }
-            if (elements[0].equals("help")) {
-                method.help();
-            }
-            if (elements[0].equals("greeted")){
-                if (elements[1].length() == 0){
-                    method.greetedAll();
-                } else {
-                    String userIn = elements[1];
-                    method.greeted(userIn);
+            if(elements.length == 3){
+                if (elements[0].equals("greet")) {
+                    method.greets(elements[1], elements[2]);
                 }
             }
-            if (elements[0].equals("clear")) {
-                System.out.println("Clear user :");
-                method.clear(elements[1]);
+            if(elements.length == 2){
+                if (elements[0].equals("greeted")){
+                        method.greeted(elements[1]);
+                }
+                if (elements[0].equals("clear")) {
+                    method.clear(elements[1]);
+                }
+                if (elements[0].equals("greet")){
+                    method.greet(elements[1]);
+                }
             }
-            if (elements[0].equals("count")) {
-                System.out.println("Count user :");
-                method.counter();
+            if(elements.length == 1){
+                if (elements[0].equals("help")) {
+                    method.help();
+                }
+                if (elements[0].equals("greeted")) {
+                    method.greetedAll();
+                }
+                if (elements[0].equals("count")) {
+                    method.counter();
+                }
             }
         }
         System.out.println("Thank you for your time!");
     }
 
+    public void greets(String name, String lang) {
+
+    }
 
     public void greet(String name) {
 
