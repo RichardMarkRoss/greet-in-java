@@ -7,8 +7,8 @@ public class Main implements GreetInterface {
 
     public static void main(String[] args) {
         Scanner insert = new Scanner(System.in);
-
-        Greet method = new Greet();
+        GreetDataBase method = new GreetDataBase();
+//        Greet method = new Greet();
         System.out.println("type help for more commands");
         String userInput = "";
 

@@ -30,7 +30,7 @@
                     <artifactId>flyway-maven-plugin</artifactId>
                     <version>5.2.4</version>
                     <configuration>
-                        <url>jdbc:h2:./db/user_count</url>
+                        <url>jdbc:h2:./target/user_count</url>
                         <user>sa</user>
                     </configuration>
                     <dependencies>
@@ -51,7 +51,6 @@
                 </plugin>
             </plugins>
         </build>
-
 
     <dependencies>
         <dependency>

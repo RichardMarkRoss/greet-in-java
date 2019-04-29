@@ -7,21 +7,21 @@ public class GreetDataBase implements GreetInterface {
     String language;
     int counting;
 
-    final String INSERT_USER_SQL = "insert into user_count_data (username, counter) values(?, ?)";
-    final String COUNT_USER_SQL = "select count(*) From user_count_data";
-    final String UPDATE_USER_SQL = "update user_count_data set counter = ? where username = ?";
-    final String SELECT_USER_SQL = "select username From user_count_data where username = ?";
+    final String INSERT_USER_SQL = "insert into multiple_user (username, counter) values(?, ?)";
+    final String COUNT_USER_SQL = "select count(*) From multiple_user where username = ?";
+    final String UPDATE_USER_SQL = "update multiple_user set counter = ? where username = ?";
+    final String SELECT_USER_SQL = "select username From multiple_user where username = ?";
     Connection conn;
     PreparedStatement psCreateNewUser;
     PreparedStatement psCountUsers;
     PreparedStatement psUpdateUser;
     PreparedStatement psSelectUser;
-    Greet greet = new Greet();
 
-    public void jdbcGreetUser() {
+
+    GreetDataBase() {
         try {
-            conn = DriverManager.
-                    getConnection("jdbc:h2:./db/user_count", "sa", "");
+            Class.forName("org.h2.Driver");
+            conn = DriverManager.getConnection("jdbc:h2:./target/user_count", "sa", "");
             psCreateNewUser = conn.prepareStatement(INSERT_USER_SQL);
             psCountUsers = conn.prepareStatement(COUNT_USER_SQL);
             psUpdateUser = conn.prepareStatement(UPDATE_USER_SQL);
@@ -31,69 +31,89 @@ public class GreetDataBase implements GreetInterface {
         }
     }
 
-
     @Override
     public void greets(String name, String language) {
         this.language = language;
+        this.username = name;
+        System.out.println("Username: " + username + "  " + psSelectUser);
         try {
-//            psSelectUser.setString(1,username);
-//            ResultSet rsDataBase = psSelectUser.executeQuery();
-//            System.out.println(rsDataBase);
-//            if (rsDataBase.next()) {
-                psCreateNewUser.setString(1, name);
+            psSelectUser.setString(1,username);
+            ResultSet rsDataBase = psSelectUser.executeQuery();
+            System.out.println(rsDataBase);
+            if (!rsDataBase.next()) {
+                psCreateNewUser.setString(1, username);
                 psCreateNewUser.setInt(2, 1);
                 psCreateNewUser.execute();
-//                ResultSet rsDataBase = psSelectUser.executeQuery();
-//                System.out.println(rsDataBase);
+                System.out.println(rsDataBase);
                 System.out.println(name + " has been passed in database!");
-//            } else {
-//                counting = rsDataBase.getInt("counter");
-//                psUpdateUser.setString(1, username);
-//                psUpdateUser.setInt(2, ++counting);
-//                psUpdateUser.execute();
-//                System.out.println(username + " name has been updated in database!");
-//            }
+            } else {
+                counting = rsDataBase.getInt("counter");
+                psUpdateUser.setString(2, name);
+                psUpdateUser.setInt(1, ++counting);
+                psUpdateUser.execute();
+                System.out.println(name + " name has been updated in database!");
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
         if (language.equals("english")) {
-            System.out.println("Hello " + username);
+            System.out.println("Hello " + name);
         } else if (language.equals("afrikaans")) {
-            System.out.println("goeie dag " + username);
+            System.out.println("goeie dag " + name);
         } else if (language.equals("xhosa")) {
-            System.out.println("Molo" + username);
+            System.out.println("Molo" + name);
         }
     }
-    public void greet(String username){
-
+    public void greet(String name){
+        try {
+            psSelectUser.setString(1, name);
+            ResultSet rsDataBase = psSelectUser.executeQuery();
+            System.out.println(rsDataBase);
+            if (rsDataBase.next()) {
+                psCreateNewUser.setString(1, name);
+                psCreateNewUser.setInt(2, 1);
+                psCreateNewUser.execute();
+//                System.out.println(rsDataBase);
+                System.out.println(name + " has been passed in database!");
+            } else {
+                counting = rsDataBase.getInt("counter");
+                psUpdateUser.setString(2, name);
+                psUpdateUser.setInt(1, ++counting);
+                psUpdateUser.execute();
+                System.out.println(name + " name has been updated in database!");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        System.out.println("Hello " + name);
     }
 
     @Override
     public void greeted(String username) {
         try {
-            if (!username.equals("")) {
+                psCountUsers.setString(1,username);
                 psCountUsers.executeQuery();
-            } else {
+        } catch (SQLException ex) {
+                ex.printStackTrace();
+        }
+    }
+
+    @Override
+    public void greetedAll() {
+        try {
                 PreparedStatement psReturnAll = conn.prepareStatement("select count(*) from multiple_user");
                 System.out.println("amount of users:" + psReturnAll);
-            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
 
     @Override
-    public void greetedAll() {
-
-    }
-
-    @Override
     public void counter() {
-        PreparedStatement psReturnAll = null;
         try {
-            psReturnAll = conn.prepareStatement("select count(*) from multiple_user");
-            System.out.println("amount of users:" + psReturnAll);
+           psCountUsers.executeQuery();
+            System.out.println("amount of users:" + psCountUsers);
         } catch (SQLException e) {
             e.printStackTrace();
         }

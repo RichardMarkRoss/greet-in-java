@@ -25,6 +25,4 @@ public abstract class DataBaseMig extends Main {
             ex.printStackTrace();
         }
     }
-
-    public abstract void greetedAll();
 }
