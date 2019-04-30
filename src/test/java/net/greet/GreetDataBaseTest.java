@@ -43,7 +43,7 @@ public class GreetDataBaseTest {
 //    }
 
 //    @Test
-//    public void ShouldTestIfMultipalNamesStoredinMap() throws SQLException {
+//    public void ShouldTestIfMultipalNamesStoredinMap(){
 //        final String RETURN_ALL_SQL = "select * from multiple_user";
 //        try {
 //            PreparedStatement psReturnAll = conn.prepareStatement(RETURN_ALL_SQL);

@@ -40,7 +40,7 @@ public class GreetDataBase implements GreetInterface {
             psSelectUser.setString(1,username);
             ResultSet rsDataBase = psSelectUser.executeQuery();
             System.out.println(rsDataBase);
-            if (!rsDataBase.next()) {
+            if (!rsDataBase.next()){
                 psCreateNewUser.setString(1, username);
                 psCreateNewUser.setInt(2, 1);
                 psCreateNewUser.execute();
