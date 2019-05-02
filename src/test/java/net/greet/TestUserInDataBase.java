@@ -16,7 +16,7 @@ public class TestUserInDataBase {
     @BeforeEach
     public void cleanUpTables() {
         try {
-            conn = getConnection("jdbc:h2:file:./target/user_count", "sa", "");
+            conn = getConnection("jdbc:h2:file:./target/db/user_count", "sa", "");
             Statement statement = conn.createStatement();
             statement.addBatch("delete from multiple_user");
 //            statement.addBatch("update multiple_user set price = 0  where name = ?");
@@ -26,6 +26,24 @@ public class TestUserInDataBase {
             System.out.println(ex);
         }
     }
+    //    @Test
+//    public void ShouldTestIfMultipalNamesStoredinMap(){
+//        final String RETURN_ALL_SQL = "select * from multiple_user";
+//        try {
+//            PreparedStatement psReturnAll = conn.prepareStatement(RETURN_ALL_SQL);
+//            GreetDataBase greet = new GreetDataBase();
+//            greet.greets("richard", "english");
+//            greet.greets("tabang", "afrikaans");
+//            greet.greets("vusi", "xhosa");
+//            greet.greets("andre", "english");
+//            greet.greets("tido", "afrikaans");
+//            greet.greets("nat", "xhosa");
+//            assertEquals(greet.counter(), );
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+//    }
+
 //
 //    @Test
 //    public void addDataWithPreparedStatement() {

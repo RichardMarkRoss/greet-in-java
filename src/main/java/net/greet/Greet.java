@@ -6,7 +6,7 @@ import java.util.Map;
 public class Greet implements GreetInterface {
     Map<String, Integer> hash = new HashMap<String, Integer>();
     String username = "";
-    private String language = "";
+    String language = "";
     int counterForUser;
 
     @Override
