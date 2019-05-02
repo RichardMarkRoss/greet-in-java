@@ -109,7 +109,9 @@ public class GreetDataBase implements GreetInterface {
     public void greetedAll() {
         try {
             ResultSet counts = psSelectAll.executeQuery();
-                System.out.println("User "+ counts.getString("username") + "has been greeted" + counts.getInt("counter") + "time/s.");
+            while(counts.next()) {
+                System.out.println("User " + counts.getString("username") + " has been greeted " + counts.getInt("counter") + " time/s.");
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -135,12 +137,14 @@ public class GreetDataBase implements GreetInterface {
     @Override
     public void clear(String user) {
         try {
-            if (user != "") {
+            psSelectUser.setString(1, user);
+            ResultSet counts = psSelectUser.executeQuery();
+            if(counts.next()){
                 psDeleteUser.setString(1, user);
                 psDeleteUser.execute();
                 System.out.println(user + " has been deleted");
             } else {
-                System.out.println("User does not exist");
+                System.out.println("User "+ user + " does not exist");
             }
         } catch (SQLException e) {
             e.printStackTrace();
