@@ -5,29 +5,39 @@ import java.sql.*;
 public class GreetDataBase implements GreetInterface {
     String username;
     String language;
-    int counting;
+//    int counting;
 
-    final String INSERT_USER_SQL = "insert into multiple_user (username, counter) values(?, ?)";
-    final String COUNT_USER_SQL = "select count(*) From multiple_user where username = ?";
-    final String UPDATE_USER_SQL = "update multiple_user set counter = ? where username = ?";
-    final String SELECT_USER_SQL = "select username From multiple_user where username = ?";
+    final String INSERT_USER_SQL = "INSERT INTO multiple_user (username, counter) VALUES(?, ?)";
+    final String COUNT_USER_SQL = "SELECT count(*) FROM multiple_user WHERE username = ?";
+    final String UPDATE_USER_SQL = "UPDATE multiple_user SET counter = ? WHERE username = ?";
+    final String SELECT_USER_SQL = "SELECT username, counter FROM multiple_user WHERE username = ?";
+    final String DELETE_USER_SQL = "DELETE FROM multiple_user WHERE username = ?";
+    final String COUNT_ALL_SQL = "SELECT count(*) FROM multiple_user";
     Connection conn;
     PreparedStatement psCreateNewUser;
     PreparedStatement psCountUsers;
     PreparedStatement psUpdateUser;
     PreparedStatement psSelectUser;
-
+    PreparedStatement psDeleteUser;
+    PreparedStatement psCountAll;
 
     GreetDataBase() {
         try {
-            Class.forName("org.h2.Driver");
-            conn = DriverManager.getConnection("jdbc:h2:./target/user_count", "sa", "");
+            System.out.println("TRY");
+//            Class.forName("org.h2.Driver");
+            conn = DriverManager.getConnection("jdbc:h2:./target/db/user_count", "sa", "");
             psCreateNewUser = conn.prepareStatement(INSERT_USER_SQL);
             psCountUsers = conn.prepareStatement(COUNT_USER_SQL);
             psUpdateUser = conn.prepareStatement(UPDATE_USER_SQL);
             psSelectUser = conn.prepareStatement(SELECT_USER_SQL);
+            psDeleteUser = conn.prepareStatement(DELETE_USER_SQL);
+            psCountAll = conn.prepareStatement(COUNT_ALL_SQL);
         } catch(Exception ex) {
             ex.printStackTrace();
+            System.out.println("CATCH");
+        }
+        finally{
+            System.out.println("Finally");
         }
     }
 
@@ -39,7 +49,7 @@ public class GreetDataBase implements GreetInterface {
         try {
             psSelectUser.setString(1,username);
             ResultSet rsDataBase = psSelectUser.executeQuery();
-            System.out.println(rsDataBase);
+//            System.out.println(rsDataBase);
             if (!rsDataBase.next()){
                 psCreateNewUser.setString(1, username);
                 psCreateNewUser.setInt(2, 1);
@@ -47,10 +57,10 @@ public class GreetDataBase implements GreetInterface {
                 System.out.println(rsDataBase);
                 System.out.println(name + " has been passed in database!");
             } else {
-                counting = rsDataBase.getInt("counter");
+                int counting = rsDataBase.getInt("counter");
                 psUpdateUser.setString(2, name);
                 psUpdateUser.setInt(1, ++counting);
-                psUpdateUser.execute();
+                psUpdateUser.executeUpdate();
                 System.out.println(name + " name has been updated in database!");
             }
         } catch (Exception ex) {
@@ -74,10 +84,9 @@ public class GreetDataBase implements GreetInterface {
                 psCreateNewUser.setString(1, name);
                 psCreateNewUser.setInt(2, 1);
                 psCreateNewUser.execute();
-//                System.out.println(rsDataBase);
                 System.out.println(name + " has been passed in database!");
             } else {
-                counting = rsDataBase.getInt("counter");
+                int counting = rsDataBase.getInt("counter");
                 psUpdateUser.setString(2, name);
                 psUpdateUser.setInt(1, ++counting);
                 psUpdateUser.execute();
@@ -102,8 +111,8 @@ public class GreetDataBase implements GreetInterface {
     @Override
     public void greetedAll() {
         try {
-                PreparedStatement psReturnAll = conn.prepareStatement("select count(*) from multiple_user");
-                System.out.println("amount of users:" + psReturnAll);
+               psCountAll.execute();
+                System.out.println("amount of users:" + psCountAll.executeQuery());
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -123,12 +132,10 @@ public class GreetDataBase implements GreetInterface {
     public void clear(String user) {
         try {
             if (user != "") {
-                PreparedStatement removeUser = null;
-                removeUser = conn.prepareStatement("delete username, counter from multiple_user where username = ?");
-                removeUser.setString(1, user);
-
+                psDeleteUser.setString(1, user);
+                psDeleteUser.execute();
             } else {
-
+                System.out.println("User does not exist");
             }
         } catch (SQLException e) {
             e.printStackTrace();

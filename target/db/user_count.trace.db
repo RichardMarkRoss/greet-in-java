@@ -1,0 +1,22 @@
+2019-05-02 12:28:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "counter" not found [42122-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3214)
+	at org.h2.jdbc.JdbcResultSet.get(JdbcResultSet.java:3287)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:350)
+	at net.greet.GreetDataBase.greets(GreetDataBase.java:60)
+	at net.greet.Main.main(Main.java:22)
+2019-05-02 12:34:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "counter" not found [42122-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3214)
+	at org.h2.jdbc.JdbcResultSet.get(JdbcResultSet.java:3287)
+	at org.h2.jdbc.JdbcResultSet.getInt(JdbcResultSet.java:350)
+	at net.greet.GreetDataBase.greets(GreetDataBase.java:60)
+	at net.greet.Main.main(Main.java:22)

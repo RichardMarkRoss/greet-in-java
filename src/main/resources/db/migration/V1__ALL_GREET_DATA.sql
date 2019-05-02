@@ -1,5 +1,6 @@
-create table multiple_user(
-    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    username varchar,
+CREATE TABLE multiple_user
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    username varchar(255),
     counter int
 );
