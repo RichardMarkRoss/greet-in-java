@@ -11,22 +11,22 @@ public class GreetDataBaseTest {
 
     @Test
     public void ShouldTestIfNameisStoredinVar() {
-        Greet greetDataBase = new Greet();
-        greetDataBase.greets("richard", "english");
-        assertEquals(greetDataBase.username, "richard");
+        Greet greet = new Greet();
+        greet.greets("richard", "english");
+        assertEquals(greet.username, "richard");
     }
 
     @Test
     public void ShouldTestlangIsStoredinVar(){
-        Greet greetDataBase = new Greet();
-        greetDataBase.greets("tabang", "afrikaans");
-        assertEquals(greetDataBase.language, "afrikaans");
+        Greet greet = new Greet();
+        greet.greets("tabang", "afrikaans");
+        assertEquals(greet.language, "afrikaans");
     }
     @Test
     public void shouldTestGreetedForNameLength(){
-        Greet greetDataBase = new Greet();
+        Greet greet = new Greet();
 
-        assertEquals( greetDataBase.help(), "greet- followed by the name and the language the user is to be greeted in,\n" +
+        assertEquals(greet.help(), "greet- followed by the name and the language the user is to be greeted in,\n" +
                 "greeted- should display a list of all users that has been greeted and how many time each user has been greeted,\n" +
                 "greeted- followed by a username returns how many times that username have been greeted,\n" +
                 "counter- returns a count of how many unique users has been greeted,\n" +

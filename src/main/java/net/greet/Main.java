@@ -2,8 +2,7 @@ package net.greet;
 
 import java.util.*;
 
-public class Main implements GreetInterface {
-
+public class Main {
 
     public static void main(String[] args) {
         Scanner insert = new Scanner(System.in);
@@ -47,32 +46,4 @@ public class Main implements GreetInterface {
         }
         System.out.println("Thank you for your time!");
     }
-
-    public void greets(String name, String lang) {
-
-    }
-
-    public void greet(String name) {
-
-    }
-
-    public void greeted(String name) {
-
-    }
-
-    public void greetedAll() {
-
-    }
-
-    public void counter() {
-
-    }
-
-    public void clear(String name) {
-
-    }
-    public String help() {
-        return null;
-    }
-
 }
