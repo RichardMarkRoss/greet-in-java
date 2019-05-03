@@ -1,13 +1,17 @@
 package net.greet;
 
+import net.greet.Database.GreetDataBase;
+import net.greet.GreetMap.Greet;
+import net.greet.enums.Languages;
+
 import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner insert = new Scanner(System.in);
-        GreetDataBase method = new GreetDataBase();
-//        Greet method = new Greet();
+//        GreetDataBase method = new GreetDataBase();
+        Greet method = new Greet();
         System.out.println("type help for more commands");
         String userInput = "";
 
@@ -18,7 +22,11 @@ public class Main {
 
             if(elements.length == 3){
                 if (elements[0].equals("greet")) {
-                    method.greets(elements[1], elements[2]);
+                    for (Languages lang : Languages.values()) {
+                        if(lang.toString().equals(elements[2])) {
+                            method.greets(elements[1], lang);
+                        }
+                    }
                 }
             }
             if(elements.length == 2){

@@ -1,4 +1,7 @@
-package net.greet;
+package net.greet.Database;
+
+import net.greet.GreetInterface;
+import net.greet.enums.Languages;
 
 import java.sql.*;
 
@@ -23,7 +26,7 @@ public class GreetDataBase implements GreetInterface {
     PreparedStatement psDeleteUser;
     PreparedStatement psCountAll;
 
-    GreetDataBase() {
+    public GreetDataBase() {
 
         try {
             conn = DriverManager.getConnection("jdbc:h2:./target/db/user_count", "sa", "");
@@ -38,8 +41,9 @@ public class GreetDataBase implements GreetInterface {
         }
     }
 
+
     @Override
-    public void greets(String name, String language) {
+    public void greets(String name, Languages lang) {
         try {
             psSelectUser.setString(1,name);
             ResultSet rsDataBase = psSelectUser.executeQuery();
@@ -59,14 +63,15 @@ public class GreetDataBase implements GreetInterface {
             ex.printStackTrace();
         }
 
-        if (language.equals("english")) {
+        if (lang.equals(Languages.english)) {
             System.out.println("Hello " + name);
-        } else if (language.equals("afrikaans")) {
+        } else if (lang.equals(Languages.afrikaans)) {
             System.out.println("goeie dag " + name);
-        } else if (language.equals("xhosa")) {
+        } else if (lang.equals(Languages.xhosa)) {
             System.out.println("Molo" + name);
         }
     }
+
     public void greet(String name){
         try {
             psSelectUser.setString(1, name);

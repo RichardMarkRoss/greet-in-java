@@ -1,7 +1,9 @@
 package net.greet;
 
+import net.greet.enums.Languages;
+
 public interface GreetInterface {
-    void greets(String name, String lang);
+    void greets(String name, Languages lang);
 
     void greet(String name);
 

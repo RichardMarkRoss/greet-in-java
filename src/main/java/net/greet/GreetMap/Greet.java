@@ -1,52 +1,52 @@
-package net.greet;
+package net.greet.GreetMap;
+
+import net.greet.GreetInterface;
+import net.greet.enums.Languages;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Greet implements GreetInterface {
     Map<String, Integer> hash = new HashMap<String, Integer>();
-    String username = "";
-    String language = "";
-    int counterForUser;
+    public String username = "";
+    public int counterForUser;
 
     @Override
-    public void greets(String username, String language) {
+    public void greets(String username, Languages lang) {
         this.username = username;
-        this.language = language;
         if (!hash.containsKey(username)) {
             this.hash.put(username, 0);
         }
 
-        if (!language.equals("") && hash.containsKey(username)) {
+        if (hash.containsKey(username)) {
             int counterForUser = this.hash.get(username);
             counterForUser++;
             this.hash.put(username, counterForUser);
         }
 
-            if (language.equals("english")) {
-                System.out.println("Hello " + username);
-            } else if (language.equals("afrikaans")) {
-                System.out.println("goeie dag " + username);
-            } else if (language.equals("xhosa")) {
-                System.out.println("Molo" + username);
-            }
+        if (lang.equals(Languages.english)) {
+            System.out.println("Hello " + username);
+        } else if (lang.equals(Languages.afrikaans)) {
+            System.out.println("goeie dag " + username);
+        } else if (lang.equals(Languages.xhosa)) {
+            System.out.println("Molo" + username);
+        }
 
-            System.out.println("your name has been successfully greeted!");
 
     }
 
     public void greet(String name){
         if (!hash.containsKey(name)) {
             this.hash.put(name, 0);
+            System.out.println("Hello " + name);
         }
-
         if (hash.containsKey(name)) {
             int counterForUser = this.hash.get(name);
             counterForUser++;
             this.hash.put(name, counterForUser);
+            System.out.println("Hello " + name);
         }
-        System.out.println("Hello " + name);
-        System.out.println("your name has been successfully greeted!");
+
     }
 
     @Override
@@ -65,7 +65,7 @@ public class Greet implements GreetInterface {
             for (HashMap.Entry<String, Integer> entry : hash.entrySet()) {
                 String key = entry.getKey();
                 int value = entry.getValue();
-                System.out.println(value + " has been greeted " + key + " times");
+                System.out.println(key + " has been greeted " + value + " times");
             }
         }catch(Exception e){
             e.printStackTrace();

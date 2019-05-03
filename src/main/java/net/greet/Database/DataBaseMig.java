@@ -1,4 +1,6 @@
-package net.greet;
+package net.greet.Database;
+
+import net.greet.Main;
 
 import java.sql.*;
 
