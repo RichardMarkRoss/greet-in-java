@@ -11,7 +11,8 @@ public class Greet implements GreetInterface {
 
     @Override
     public void greets(String username, String language) {
-
+        this.username = username;
+        this.language = language;
         if (!hash.containsKey(username)) {
             this.hash.put(username, 0);
         }
