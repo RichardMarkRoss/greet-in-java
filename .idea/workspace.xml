@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c8784f0-e488-43ab-ad02-5231e635d765" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/greet/Database/GreetDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greet/Database/GreetDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/greet/GreetInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greet/GreetInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/greet/GreetMap/Greet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greet/GreetMap/Greet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/greet/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greet/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/greet/TestUserInDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/greet/TestUserInDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/greet/Database/GreetDataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/greet/Database/GreetDataBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/greet/GreetInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/greet/GreetInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/greet/GreetMap/Greet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/greet/GreetMap/Greet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/greet/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/greet/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/db/user_count.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/db/user_count.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/db/user_count.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/db/user_count.trace.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/net/greet/TestUserInDataBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/net/greet/TestUserInDataBase.class" afterDir="false" />
-    </list>
+    <list default="true" id="8c8784f0-e488-43ab-ad02-5231e635d765" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,11 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/greet/GreetMap/Greet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="96" column="25" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
+            <state relative-caret-position="-75">
+              <caret line="79" column="51" lean-forward="true" selection-start-line="79" selection-start-column="51" selection-end-line="79" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/net/greet/TestUserInDataBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="31" lean-forward="true" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+            <state relative-caret-position="109">
+              <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -178,8 +164,8 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/net/greet/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/greet/Database/GreetDataBase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/greet/GreetMap/Greet.java" />
         <option value="$PROJECT_DIR$/src/test/java/net/greet/TestUserInDataBase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/greet/GreetMap/Greet.java" />
       </list>
     </option>
   </component>
@@ -245,24 +231,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="greet" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="greet-in-java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="greet-in-java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="greet" type="462c0819:PsiDirectoryNode" />
-              <item name="Database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="greet-in-java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="greet-in-java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="greet" type="462c0819:PsiDirectoryNode" />
-              <item name="GreetMap" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="greet-in-java" type="b2602c69:ProjectViewProjectNode" />
@@ -433,15 +401,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GreetDataBaseTest_ShouldTestIfNameStoredinMap - 2019.05.02 at 16h 04m 21s.xml">
-      <configuration name="GreetDataBaseTest.ShouldTestIfNameStoredinMap" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GreetDataBaseTest_ShouldTestIfNameStoredinMap - 2019.05.02 at 16h 05m 13s.xml">
-      <configuration name="GreetDataBaseTest.ShouldTestIfNameStoredinMap" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GreetDataBaseTest_ShouldTestIfNameStoredinMap - 2019.05.02 at 16h 06m 41s.xml">
-      <configuration name="GreetDataBaseTest.ShouldTestIfNameStoredinMap" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GreetDataBaseTest_ShouldTestIfNameStoredinMap - 2019.05.02 at 16h 06m 55s.xml">
       <configuration name="GreetDataBaseTest.ShouldTestIfNameStoredinMap" configurationId="JUnit" />
     </history-entry>
@@ -463,10 +422,18 @@
     <history-entry file="TestUserInDataBase - 2019.05.09 at 12h 29m 36s.xml">
       <configuration name="TestUserInDataBase" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestUserInDataBase - 2019.05.09 at 12h 55m 26s.xml">
+      <configuration name="TestUserInDataBase" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestUserInDataBase_ShouldTestIfMultipalNamesStoredinMap - 2019.05.09 at 12h 55m 34s.xml">
+      <configuration name="TestUserInDataBase.ShouldTestIfMultipalNamesStoredinMap" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestUserInDataBase_ShouldTestIfMultipalNamesStoredinMap - 2019.05.09 at 12h 55m 50s.xml">
+      <configuration name="TestUserInDataBase.ShouldTestIfMultipalNamesStoredinMap" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49837133" visible="true" weight="0.2122905" />
       <window_info id="Structure" order="1" sideWeight="0.50162864" side_tool="true" weight="0.101356745" />
@@ -480,7 +447,7 @@
       <window_info id="Job Explorer" order="9" weight="0.32960895" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.88667196" visible="true" weight="0.06351791" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.88667196" visible="true" weight="0.4446254" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.30456027" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -749,16 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/greet/GreetMap/Greet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="96" column="25" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/greet/GreetInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -788,8 +745,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/net/greet/TestUserInDataBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="31" lean-forward="true" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+        <state relative-caret-position="109">
+          <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/greet/GreetMap/Greet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-75">
+          <caret line="79" column="51" lean-forward="true" selection-start-line="79" selection-start-column="51" selection-end-line="79" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

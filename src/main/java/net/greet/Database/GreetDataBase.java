@@ -68,7 +68,7 @@ public class GreetDataBase implements GreetInterface {
         } else if (lang.equals(Languages.afrikaans)) {
             System.out.println("goeie dag " + name);
         } else if (lang.equals(Languages.xhosa)) {
-            System.out.println("Molo" + name);
+            System.out.println("Molo " + name);
         }
     }
 
