@@ -29,9 +29,8 @@ public class Greet implements GreetInterface {
         } else if (lang.equals(Languages.afrikaans)) {
             System.out.println("goeie dag " + username);
         } else if (lang.equals(Languages.xhosa)) {
-            System.out.println("Molo" + username);
+            System.out.println("Molo " + username);
         }
-
 
     }
 
@@ -87,8 +86,10 @@ public class Greet implements GreetInterface {
     }
 
     @Override
-    public void counter() {
-        System.out.println("amount of user are : " + hash.size());
+    public int counter() {
+        int hashSize = hash.size();
+        System.out.println("amount of user are : " + hashSize);
+        return hashSize;
     }
 
     @Override

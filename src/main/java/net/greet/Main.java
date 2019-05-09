@@ -10,11 +10,10 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner insert = new Scanner(System.in);
-//        GreetDataBase method = new GreetDataBase();
-        Greet method = new Greet();
-        System.out.println("type help for more commands");
+        GreetDataBase method = new GreetDataBase();
+//        Greet method = new Greet();
+        System.out.println("type help    for more commands");
         String userInput = "";
-
 
         while (!userInput.equals("exit")) {
             userInput = insert.nextLine();

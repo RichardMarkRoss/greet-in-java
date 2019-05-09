@@ -1,5 +1,7 @@
 package net.greet;
 
+import net.greet.Database.GreetDataBase;
+import net.greet.enums.Languages;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -18,55 +20,27 @@ public class TestUserInDataBase {
         try {
             conn = getConnection("jdbc:h2:file:./target/db/user_count", "sa", "");
             Statement statement = conn.createStatement();
-            statement.addBatch("delete from multiple_user");
-//            statement.addBatch("update multiple_user set price = 0  where name = ?");
+            statement.addBatch("truncate table multiple_user");
             statement.executeBatch();
 
         } catch(Exception ex) {
             System.out.println(ex);
         }
     }
-    //    @Test
-//    public void ShouldTestIfMultipalNamesStoredinMap(){
-//        final String RETURN_ALL_SQL = "select * from multiple_user";
-//        try {
-//            PreparedStatement psReturnAll = conn.prepareStatement(RETURN_ALL_SQL);
-//            GreetDataBase greet = new GreetDataBase();
-//            greet.greets("richard", "english");
-//            greet.greets("tabang", "afrikaans");
-//            greet.greets("vusi", "xhosa");
-//            greet.greets("andre", "english");
-//            greet.greets("tido", "afrikaans");
-//            greet.greets("nat", "xhosa");
-//            assertEquals(greet.counter(), );
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }
-//    }
 
-//
-//    @Test
-//    public void addDataWithPreparedStatement() {
-//
-//        try {
-//
-//
-//            final String INSERT_NAME_SQL = "insert into multiple_user (username, counter) values (?, ?)";
-//            final String FIND_NAME_SQL = "select username, counter from multiple_user where username = ?";
-//
-//            PreparedStatement addPreparedStatement = conn.prepareStatement(INSERT_NAME_SQL);
-//            PreparedStatement findPreparedStatement = conn.prepareStatement(FIND_NAME_SQL);
-//
-//
-//            addPreparedStatement.setString(1, "Richard");
-//            addPreparedStatement.setInt(2, 1);
-//            addPreparedStatement.execute();
-//
-//            System.out.println(findPreparedStatement.executeQuery());
-//
-//        } catch (Exception e) {
-//            fail(e);
-//        }
-//    }
-
+        @Test
+        public void ShouldTestIfMultipalNamesStoredinMap(){
+        try {
+            GreetDataBase greet = new GreetDataBase();
+            greet.greets("richard", Languages.english);
+            greet.greets("tabang", Languages.afrikaans);
+            greet.greets("vusi", Languages.xhosa);
+            greet.greets("andre", Languages.english);
+            greet.greets("tido", Languages.afrikaans);
+            greet.greets("nat", Languages.xhosa);
+            assertEquals(greet.counter(), 6);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

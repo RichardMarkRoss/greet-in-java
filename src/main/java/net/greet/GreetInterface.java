@@ -11,7 +11,7 @@ public interface GreetInterface {
 
     void greetedAll();
 
-    void counter();
+    int counter();
 
     void clear(String name);
 

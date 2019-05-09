@@ -123,7 +123,7 @@ public class GreetDataBase implements GreetInterface {
     }
 
     @Override
-    public void counter() {
+    public int counter() {
         try {
 
             ResultSet rs = psCountAll.executeQuery();
@@ -131,12 +131,12 @@ public class GreetDataBase implements GreetInterface {
             rs.next();
                 int counter = rs.getInt(1);
                 System.out.println("amount of users:" + counter);
-
+                return counter;
         } catch (SQLException ex) {
 
             ex.printStackTrace();
         }
-
+        return 0;
     }
 
     @Override
