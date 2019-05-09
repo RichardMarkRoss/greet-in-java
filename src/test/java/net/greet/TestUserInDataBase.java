@@ -29,7 +29,7 @@ public class TestUserInDataBase {
     }
 
         @Test
-        public void ShouldTestIfMultipalNamesStoredinMap(){
+        public void ShouldTestIfMultipalNamesStoredinTable(){
         try {
             GreetDataBase greet = new GreetDataBase();
             greet.greets("richard", Languages.english);
@@ -43,4 +43,20 @@ public class TestUserInDataBase {
             e.printStackTrace();
         }
     }
+    @Test
+    public void ShouldTestRemoveSingleMultipalNamesStoredinTable(){
+        try {
+            GreetDataBase greet = new GreetDataBase();
+            greet.greets("richard", Languages.english);
+            greet.greets("tabang", Languages.afrikaans);
+            greet.greets("tabang", Languages.xhosa);
+            greet.greets("andre", Languages.english);
+            greet.greets("richard", Languages.afrikaans);
+            greet.clear("andre");
+            assertEquals(greet.counter(), 2);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }
