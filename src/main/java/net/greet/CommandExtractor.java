@@ -3,16 +3,25 @@ package net.greet;
 import net.greet.enums.Languages;
 
 public class CommandExtractor {
-    CommandExecutor extractor = new CommandExecutor();
+    CommandExecutor executor = new CommandExecutor();
 
     String name = "";
     String lang = "";
-    String commandEx = "";
+    private String commandEx = "";
 
+
+    public String getCommandEx(){
+        return this.commandEx;
+    }
+    public String getName(){
+        return this.name;
+    }
+    public String getLang(){
+        return this.lang;
+    }
 
     public void extractor(String userInput) {
         String[] elements = userInput.split("\\s");
-
 
             if(elements.length == 3) {
                 this.commandEx = elements[0];
@@ -21,19 +30,18 @@ public class CommandExtractor {
 
                 for (Languages language : Languages.values()) {
                     if (language.toString().equals(elements[2])) {
-                        extractor.greeting(commandEx, name, language);
+                        executor.greeting(commandEx, name, language);
                     }
                 }
             }
             if(elements.length == 2) {
                 this.commandEx = elements[0];
                 this.name = elements[1];
-                extractor.execute(commandEx, name);
+                executor.execute(commandEx, name);
             }
             if(elements.length == 1) {
                 this.commandEx = elements[0];
-                extractor.singleCommands(commandEx);
+                executor.singleCommands(commandEx);
             }
         }
     }
-
