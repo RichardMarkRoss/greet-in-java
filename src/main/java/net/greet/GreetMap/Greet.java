@@ -24,14 +24,11 @@ public class Greet implements GreetInterface {
             this.hash.put(username, counterForUser);
         }
 
-        if (lang.equals(Languages.english)) {
-            System.out.println("Hello " + username);
-        } else if (lang.equals(Languages.afrikaans)) {
-            System.out.println("goeie dag " + username);
-        } else if (lang.equals(Languages.xhosa)) {
-            System.out.println("Molo " + username);
+        try{
+            System.out.println(Languages.valueOf(lang.toString()).getAction() + username);
+        } catch(Exception ex) {
+            System.out.println(Languages.valueOf("english").getAction() + username);
         }
-
     }
 
     public void greet(String name){

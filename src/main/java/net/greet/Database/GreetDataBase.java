@@ -63,12 +63,10 @@ public class GreetDataBase implements GreetInterface {
             ex.printStackTrace();
         }
 
-        if (lang.equals(Languages.english)) {
-            System.out.println("Hello " + name);
-        } else if (lang.equals(Languages.afrikaans)) {
-            System.out.println("goeie dag " + name);
-        } else if (lang.equals(Languages.xhosa)) {
-            System.out.println("Molo " + name);
+        try{
+            System.out.println(Languages.valueOf(lang.toString()).getAction() + name);
+        } catch(Exception er){
+            System.out.println(Languages.valueOf("english").getAction() + name);
         }
     }
 
