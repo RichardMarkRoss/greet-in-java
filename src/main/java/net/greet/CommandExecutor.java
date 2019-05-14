@@ -5,32 +5,35 @@ import net.greet.enums.Languages;
 
 public class CommandExecutor {
     GreetDataBase method = new GreetDataBase();
-    //        Greet method = new Greet();
+    private CommandExtractor extractor;
 
-    public void greeting(String command, String name, Languages lang){
-        method.greets(name, lang);
+    CommandExecutor(CommandExtractor extractor) {
+        this.extractor = extractor;
     }
 
-    public void execute(String command, String name){
-        if (command.equals("greeted")){
-            method.greeted(name);
-        }
-        if (command.equals("clear")) {
-            method.clear(name);
-        }
-        if (command.equals("greet")){
-            method.greet(name);
-        }
-    }
+    public void extractor(){
 
-    public void singleCommands(String commands){
-        if (commands.equals("help")) {
+        if (extractor.getCommandEx().equals("greet")) {
+            if (!extractor.getLang().isEmpty()){
+                method.greets(extractor.getName(), Languages.valueOf(extractor.getLang()));
+            }else{
+                method.greet(extractor.getName());
+            }
+        }
+        if (extractor.getCommandEx().equals("greeted")){
+            if(!extractor.getName().isEmpty()){
+                method.greeted(extractor.getName());
+            }else{
+                method.greetedAll();
+            }
+        }
+        if (extractor.getCommandEx().equals("clear")) {
+            method.clear(extractor.getName());
+        }
+        if (extractor.getCommandEx().equals("help")) {
             method.help();
         }
-        if (commands.equals("greeted")) {
-            method.greetedAll();
-        }
-        if (commands.equals("count")) {
+        if (extractor.getCommandEx().equals("count")) {
             method.counter();
         }
     }

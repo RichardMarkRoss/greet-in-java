@@ -8,7 +8,6 @@ import java.sql.*;
 public class GreetDataBase implements GreetInterface {
     String username;
     String language;
-//    int counting;
 
     final String INSERT_USER_SQL = "INSERT INTO multiple_user (username, counter) VALUES(?, ?)";
     final String UPDATE_USER_SQL = "UPDATE multiple_user SET counter = ? WHERE username = ?";

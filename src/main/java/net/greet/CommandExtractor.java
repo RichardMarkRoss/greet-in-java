@@ -2,14 +2,30 @@ package net.greet;
 
 import net.greet.enums.Languages;
 
-public class CommandExtractor {
-    CommandExecutor executor = new CommandExecutor();
+import java.util.Scanner;
 
-    String name = "";
-    String lang = "";
+public class CommandExtractor {
+
+    private String name = "";
+    private String lang = "";
     private String commandEx = "";
 
+    CommandExtractor(String userInput) {
+        String[] elements = userInput.toLowerCase().split("\\s");
 
+            if(elements.length == 3) {
+                this.commandEx = elements[0];
+                this.name = elements[1];
+                this.lang = elements[2];
+            }
+            if(elements.length == 2) {
+                this.commandEx = elements[0];
+                this.name = elements[1];
+            }
+            if(elements.length == 1){
+                this.commandEx = elements[0];
+            }
+        }
     public String getCommandEx(){
         return this.commandEx;
     }
@@ -19,29 +35,4 @@ public class CommandExtractor {
     public String getLang(){
         return this.lang;
     }
-
-    public void extractor(String userInput) {
-        String[] elements = userInput.split("\\s");
-
-            if(elements.length == 3) {
-                this.commandEx = elements[0];
-                this.name = elements[1];
-                this.lang = elements[2];
-
-                for (Languages language : Languages.values()) {
-                    if (language.toString().equals(elements[2])) {
-                        executor.greeting(commandEx, name, language);
-                    }
-                }
-            }
-            if(elements.length == 2) {
-                this.commandEx = elements[0];
-                this.name = elements[1];
-                executor.execute(commandEx, name);
-            }
-            if(elements.length == 1) {
-                this.commandEx = elements[0];
-                executor.singleCommands(commandEx);
-            }
-        }
-    }
+}
