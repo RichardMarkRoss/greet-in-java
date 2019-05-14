@@ -16,6 +16,7 @@ public class Main {
             CommandExtractor extractor = new CommandExtractor(userInput);
             CommandExecutor executor = new CommandExecutor(extractor);
             executor.extractor();
+
         }
         System.out.println("Thank you for your time!");
     }

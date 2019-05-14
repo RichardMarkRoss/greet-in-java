@@ -25,14 +25,9 @@ public class CommandExtractor {
             if(elements.length == 1){
                 this.commandEx = elements[0];
             }
-        }
-    public String getCommandEx(){
-        return this.commandEx;
     }
-    public String getName(){
-        return this.name;
-    }
-    public String getLang(){
-        return this.lang;
-    }
+
+    public String getCommandEx() {return this.commandEx;}
+    public String getName() {return this.name;}
+    public String getLang() {return this.lang;}
 }
