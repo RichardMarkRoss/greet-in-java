@@ -20,6 +20,34 @@ public class GreetDataBaseTest {
     }
 
     @Test
+    public void ShouldTestGreetDataBaseMethodsCounter() {
+        Greet greet = new Greet();
+        greet.greets("richard", Languages.english);
+        assertEquals(greet.counter(), "amount of user are : 1");
+    }
+
+    @Test
+    public void ShouldTestGreetDataBaseMethodsGreetedWithoutLangauge() {
+        Greet greet = new Greet();
+        greet.greets("richard", Languages.english);
+        assertEquals(greet.greeted("richard"), "richard has been greeted: 1");
+    }
+
+    @Test
+    public void ShouldTestGreetDataBaseMethodsWithLanguage() {
+        Greet greet = new Greet();
+        greet.greets("richard", Languages.english);
+        assertEquals(greet.greets("richard", Languages.xhosa), "Molo, richard");
+    }
+
+    @Test
+    public void ShouldTestGreetDataBaseMethodsRemoveUsername() {
+        Greet greet = new Greet();
+        greet.greets("richard", Languages.english);
+        greet.clear("richard");
+        assertEquals(greet.counter(), "amount of user are : 0");
+    }
+    @Test
     public void ShouldTestlangIsStoredinVar(){
         Greet greet = new Greet();
         CommandExtractor commandExtractor = new CommandExtractor("greet richard english");
@@ -40,7 +68,5 @@ public class GreetDataBaseTest {
                 "exit- exits the application,\n" +
                 "help- shows a user an overview of all possible commands.");
     }
-
-
-
+    
 }

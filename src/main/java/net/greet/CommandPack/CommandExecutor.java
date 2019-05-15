@@ -16,7 +16,7 @@ public class CommandExecutor {
             if (!extractor.getLang().isEmpty()){
                return method.greets(extractor.getName(), Languages.valueOf(extractor.getLang()));
             }else{
-                return method.greets(extractor.getName(), afrikaans);
+                return method.greets(extractor.getName(), english);
             }
         }
         if (extractor.getCommandEx().equals("greeted")){
