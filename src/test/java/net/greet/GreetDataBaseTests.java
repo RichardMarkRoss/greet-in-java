@@ -1,55 +1,57 @@
 package net.greet;
 
 import net.greet.CommandPack.CommandExtractor;
+import net.greet.Database.GreetDataBase;
 import net.greet.GreetMap.Greet;
 import net.greet.enums.Languages;
+import org.h2.command.Command;
 import org.junit.jupiter.api.Test;
 
-import java.sql.*;
+import java.sql.Connection;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GreetDataBaseTest {
+public class GreetDataBaseTests {
     Connection conn;
 
     @Test
-    public void ShouldTestIfNameisStoredinVar() {
-        Greet greet = new Greet();
-        greet.greets("richard", Languages.english);
-        assertEquals(greet.username, "richard");
+    public void ShouldTestIfNameisStored() {
+        GreetDataBase greet = new GreetDataBase();
+        CommandExtractor commandExtractor = new CommandExtractor("greet richard");
+        assertEquals(commandExtractor.getName(), "richard");
     }
 
     @Test
-    public void ShouldTestGreetDataBaseMethodsCounter() {
-        Greet greet = new Greet();
+    public void ShouldTestGreetCounter() {
+        GreetDataBase greet = new GreetDataBase();
         greet.greets("richard", Languages.english);
-        assertEquals(greet.counter(), "amount of user are : 1");
+        assertEquals(greet.counter(), "2");
     }
 
     @Test
-    public void ShouldTestGreetDataBaseMethodsGreetedWithoutLangauge() {
-        Greet greet = new Greet();
+    public void ShouldTestGreetMethodsGreetedWithoutLangauge() {
+        GreetDataBase greet = new GreetDataBase();
         greet.greets("richard", Languages.english);
-        assertEquals(greet.greeted("richard"), "richard has been greeted: 1");
+        assertEquals(greet.greeted("richard"), "richard has been greeted 1 time/s!");
     }
 
     @Test
-    public void ShouldTestGreetDataBaseMethodsWithLanguage() {
-        Greet greet = new Greet();
+    public void ShouldTestGreetMethodsWithLanguage() {
+        GreetDataBase greet = new GreetDataBase();
         greet.greets("richard", Languages.english);
         assertEquals(greet.greets("richard", Languages.xhosa), "Molo, richard");
     }
 
     @Test
-    public void ShouldTestGreetDataBaseMethodsRemoveUsername() {
-        Greet greet = new Greet();
+    public void ShouldTestGreetMethodsRemoveUsername() {
+        GreetDataBase greet = new GreetDataBase();
         greet.greets("richard", Languages.english);
         greet.clear("richard");
-        assertEquals(greet.counter(), "amount of user are : 0");
+        assertEquals(greet.counter(), "1");
     }
     @Test
     public void ShouldTestlangIsStoredinVar(){
-        Greet greet = new Greet();
+        GreetDataBase greet = new GreetDataBase();
         CommandExtractor commandExtractor = new CommandExtractor("greet richard english");
         assertEquals(commandExtractor.getLang(), "english");
     }
@@ -57,7 +59,7 @@ public class GreetDataBaseTest {
 
     @Test
     public void shouldTestGreetedForNameLength(){
-        Greet greet = new Greet();
+        GreetDataBase greet = new GreetDataBase();
 
         assertEquals(greet.help(), "greet- followed by the name and the language the user is to be greeted in,\n" +
                 "greeted- should display a list of all users that has been greeted and how many time each user has been greeted,\n" +
@@ -68,5 +70,4 @@ public class GreetDataBaseTest {
                 "exit- exits the application,\n" +
                 "help- shows a user an overview of all possible commands.");
     }
-    
 }

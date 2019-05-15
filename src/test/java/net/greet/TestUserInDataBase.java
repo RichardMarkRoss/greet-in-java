@@ -38,7 +38,7 @@ public class TestUserInDataBase {
             greet.greets("andre", Languages.english);
             greet.greets("tido", Languages.afrikaans);
             greet.greets("nat", Languages.xhosa);
-            assertEquals(greet.counter(), 6);
+            assertEquals(greet.counter(), "6");
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -53,7 +53,7 @@ public class TestUserInDataBase {
             greet.greets("andre", Languages.english);
             greet.greets("richard", Languages.afrikaans);
             greet.clear("andre");
-            assertEquals(greet.counter(), 2);
+            assertEquals(greet.counter(), "2");
         }catch(Exception e){
             e.printStackTrace();
         }
