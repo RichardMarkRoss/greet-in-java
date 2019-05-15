@@ -1,5 +1,8 @@
 package net.greet;
 
+import net.greet.CommandPack.CommandExecutor;
+import net.greet.CommandPack.CommandExtractor;
+
 import java.util.*;
 
 public class Main {
@@ -14,7 +17,7 @@ public class Main {
             userInput = insert.nextLine();
 
             CommandExtractor extractor = new CommandExtractor(userInput);
-            executor.execute(extractor);
+            System.out.println(executor.execute(extractor));
         }
         System.out.println("Thank you for your time!");
     }

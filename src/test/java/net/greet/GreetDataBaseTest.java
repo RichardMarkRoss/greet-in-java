@@ -1,5 +1,6 @@
 package net.greet;
 
+import net.greet.CommandPack.CommandExtractor;
 import net.greet.GreetMap.Greet;
 import net.greet.enums.Languages;
 import org.junit.jupiter.api.Test;
@@ -38,13 +39,6 @@ public class GreetDataBaseTest {
                 "clear- followed by a username delete the greet counter for the specified user and decrement the greet counter by 1,\n" +
                 "exit- exits the application,\n" +
                 "help- shows a user an overview of all possible commands.");
-    }
-
-    @Test
-    public void ShouldTestIfNameStoredinMap() {
-        Greet greet = new Greet();
-        greet.greet("greet richard english");
-        assertEquals(greet.counterForUser, 0);
     }
 
 

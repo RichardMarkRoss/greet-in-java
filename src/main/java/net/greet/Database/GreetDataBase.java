@@ -1,6 +1,6 @@
 package net.greet.Database;
 
-import net.greet.GreetInterface;
+import net.greet.CommandPack.GreetInterface;
 import net.greet.enums.Languages;
 
 import java.sql.*;
@@ -8,6 +8,7 @@ import java.sql.*;
 public class GreetDataBase implements GreetInterface {
     String username;
     String language;
+    String holdString;
 
     final String INSERT_USER_SQL = "INSERT INTO multiple_user (username, counter) VALUES(?, ?)";
     final String UPDATE_USER_SQL = "UPDATE multiple_user SET counter = ? WHERE username = ?";
@@ -42,7 +43,8 @@ public class GreetDataBase implements GreetInterface {
 
 
     @Override
-    public void greets(String name, Languages lang) {
+    public String greets(String name, Languages lang) {
+
         try {
             psSelectUser.setString(1,name);
             ResultSet rsDataBase = psSelectUser.executeQuery();
@@ -50,107 +52,89 @@ public class GreetDataBase implements GreetInterface {
                 psCreateNewUser.setString(1, name);
                 psCreateNewUser.setInt(2, 1);
                 psCreateNewUser.execute();
-                System.out.println(name + " has been passed in database!");
             } else {
                 int counting = rsDataBase.getInt("counter");
                 psUpdateUser.setString(2, name);
                 psUpdateUser.setInt(1, ++counting);
                 psUpdateUser.executeUpdate();
-                System.out.println(name + " name has been updated in database!");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
         try{
-            System.out.println(Languages.valueOf(lang.toString()).getAction() + name);
+            return holdString = Languages.valueOf(lang.toString()).getAction() + name;
         } catch(Exception er){
-            System.out.println(Languages.valueOf("english").getAction() + name);
+            return Languages.valueOf("english").getAction() + name;
         }
-    }
-
-    public void greet(String name){
-        try {
-            psSelectUser.setString(1, name);
-            ResultSet rsDataBase = psSelectUser.executeQuery();
-            if (!rsDataBase.next()) {
-                psCreateNewUser.setString(1, name);
-                psCreateNewUser.setInt(2, 1);
-                psCreateNewUser.execute();
-                System.out.println(name + " has been passed in database!");
-            } else {
-                int counting = rsDataBase.getInt("counter");
-                psUpdateUser.setString(2, name);
-                psUpdateUser.setInt(1, ++counting);
-                psUpdateUser.execute();
-                System.out.println(name + " name has been updated in database!");
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        System.out.println("Hello " + name);
     }
 
     @Override
-    public void greeted(String username) {
+    public String greeted(String username) {
         try {
             psSelectUser.setString(1, username);
             ResultSet counts = psSelectUser.executeQuery();
             if (counts.next()){
-                System.out.println(username + " has been greeted " + counts.getInt("counter") + " time/s!");
+                return username + " has been greeted " + counts.getInt("counter") + " time/s!";
                 }
             else{
-                System.out.println(username + " has not been greeted.");
+                return username + " has not been greeted.";
             }
         } catch (SQLException ex) {
                 ex.printStackTrace();
         }
+        return "";
     }
 
     @Override
-    public void greetedAll() {
+    public String greetedAll() {
+        String holder = "";
         try {
             ResultSet counts = psSelectAll.executeQuery();
             while(counts.next()) {
-                System.out.println("User " + counts.getString("username") + " has been greeted " + counts.getInt("counter") + " time/s.");
+                return "User " + counts.getString("username") + " has been greeted " + counts.getInt("counter") + " time/s.";
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return null;
     }
 
     @Override
-    public int counter() {
+    public String counter() {
+        String result = "";
         try {
 
             ResultSet rs = psCountAll.executeQuery();
 
             rs.next();
                 int counter = rs.getInt(1);
-                System.out.println("amount of users:" + counter);
-                return counter;
+                result = Integer.toString(counter);
+
         } catch (SQLException ex) {
 
             ex.printStackTrace();
         }
-        return 0;
+        return result;
     }
 
     @Override
-    public void clear(String user) {
+    public String clear(String user) {
+        String holder = "";
         try {
             psSelectUser.setString(1, user);
             ResultSet counts = psSelectUser.executeQuery();
             if(counts.next()){
                 psDeleteUser.setString(1, user);
                 psDeleteUser.execute();
-                System.out.println(user + " has been deleted");
+                return user + " has been deleted";
             } else {
-                System.out.println("User "+ user + " does not exist");
+                return "User "+ user + " does not exist";
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return "";
     }
 
     @Override

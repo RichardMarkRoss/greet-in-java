@@ -1,6 +1,6 @@
 package net.greet.GreetMap;
 
-import net.greet.GreetInterface;
+import net.greet.CommandPack.GreetInterface;
 import net.greet.enums.Languages;
 
 import java.util.HashMap;
@@ -12,7 +12,7 @@ public class Greet implements GreetInterface {
     public int counterForUser;
 
     @Override
-    public void greets(String username, Languages lang) {
+    public String greets(String username, Languages lang) {
         this.username = username;
         if (!hash.containsKey(username)) {
             this.hash.put(username, 0);
@@ -25,47 +25,37 @@ public class Greet implements GreetInterface {
         }
 
         try{
-            System.out.println(Languages.valueOf(lang.toString()).getAction() + username);
+            return Languages.valueOf(lang.toString()).getAction() + username;
         } catch(Exception ex) {
-            System.out.println(Languages.valueOf("english").getAction() + username);
+            return Languages.valueOf("english").getAction() + username;
         }
     }
 
-    public void greet(String name){
-        if (!hash.containsKey(name)) {
-            this.hash.put(name, 0);
-            System.out.println("Hello " + name);
-        }
-        if (hash.containsKey(name)) {
-            int counterForUser = this.hash.get(name);
-            counterForUser++;
-            this.hash.put(name, counterForUser);
-            System.out.println("Hello " + name);
-        }
-
-    }
 
     @Override
-    public void greeted(String username) {
+    public String greeted(String username) {
         try {
             hash.get(username).equals(username);
             int mapSize = hash.get(username);
             System.out.println(username + " has been greeted: " + mapSize);
+            return username + " has been greeted: " + mapSize;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return "";
     }
     @Override
-    public void greetedAll(){
+    public String greetedAll(){
         try {
             for (HashMap.Entry<String, Integer> entry : hash.entrySet()) {
                 String key = entry.getKey();
                 int value = entry.getValue();
-                System.out.println(key + " has been greeted " + value + " times");
+             return key + " has been greeted " + value + " times";
             }
         }catch(Exception e){
             e.printStackTrace();
         }
+        return "";
     }
 
     @Override
@@ -83,18 +73,20 @@ public class Greet implements GreetInterface {
     }
 
     @Override
-    public int counter() {
+    public String counter() {
         int hashSize = hash.size();
-        System.out.println("amount of user are : " + hashSize);
-        return hashSize;
+        String counter = Integer.toString(hashSize);
+        return "amount of user are : " + counter;
+
     }
 
     @Override
-    public void clear(String username) {
+    public String clear(String username) {
         if (username != "") {
             hash.remove(username);
         } else {
             hash.clear();
         }
+        return username + " has been deleted!";
     }
 }

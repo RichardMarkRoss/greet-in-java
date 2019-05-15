@@ -1,4 +1,4 @@
-package net.greet;
+package net.greet.CommandPack;
 
 import net.greet.enums.Languages;
 
@@ -10,7 +10,7 @@ public class CommandExtractor {
     private String lang = "";
     private String commandEx = "";
 
-    CommandExtractor(String userInput) {
+    public CommandExtractor(String userInput) {
         String[] elements = userInput.toLowerCase().split("\\s");
 
             if(elements.length == 3) {

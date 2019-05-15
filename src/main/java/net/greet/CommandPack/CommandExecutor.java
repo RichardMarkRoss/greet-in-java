@@ -1,36 +1,40 @@
-package net.greet;
+package net.greet.CommandPack;
 
 import net.greet.Database.GreetDataBase;
+import net.greet.GreetMap.Greet;
 import net.greet.enums.Languages;
+
+import static net.greet.enums.Languages.*;
 
 public class CommandExecutor {
     GreetDataBase method = new GreetDataBase();
+//  Greet method = new GreetDataBase();
 
-
-    public void execute(CommandExtractor extractor) {
+    public String execute(CommandExtractor extractor) {
 
         if (extractor.getCommandEx().equals("greet")) {
             if (!extractor.getLang().isEmpty()){
-                method.greets(extractor.getName(), Languages.valueOf(extractor.getLang()));
+               return method.greets(extractor.getName(), Languages.valueOf(extractor.getLang()));
             }else{
-                method.greet(extractor.getName());
+                return method.greets(extractor.getName(), afrikaans);
             }
         }
         if (extractor.getCommandEx().equals("greeted")){
             if(!extractor.getName().isEmpty()){
-                method.greeted(extractor.getName());
+               return method.greeted(extractor.getName());
             }else{
-                method.greetedAll();
+               return method.greetedAll();
             }
         }
         if (extractor.getCommandEx().equals("clear")) {
-            method.clear(extractor.getName());
+           return method.clear(extractor.getName());
         }
         if (extractor.getCommandEx().equals("help")) {
-            method.help();
+           return method.help();
         }
         if (extractor.getCommandEx().equals("count")) {
-            method.counter();
+            return method.counter();
         }
+        return null;
     }
 }
