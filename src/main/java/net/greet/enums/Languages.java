@@ -6,12 +6,13 @@ public enum Languages {
     xhosa("Molo, "),
     american("sup bro, ");
 
-    private String action;
+    String action;
 
     Languages(String action)
     {
         this.action = action;
     }
+
     public String getAction()
     {
         return this.action;

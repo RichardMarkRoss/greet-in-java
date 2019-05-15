@@ -5,13 +5,9 @@ import net.greet.enums.Languages;
 
 public class CommandExecutor {
     GreetDataBase method = new GreetDataBase();
-    private CommandExtractor extractor;
 
-    CommandExecutor(CommandExtractor extractor) {
-        this.extractor = extractor;
-    }
 
-    public void extractor(){
+    public void execute(CommandExtractor extractor) {
 
         if (extractor.getCommandEx().equals("greet")) {
             if (!extractor.getLang().isEmpty()){

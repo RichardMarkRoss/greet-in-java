@@ -18,12 +18,14 @@ public class GreetDataBaseTest {
         assertEquals(greet.username, "richard");
     }
 
-//    @Test
-//    public void ShouldTestlangIsStoredinVar(){
-//        Greet greet = new Greet();
-//        greet.greets("tabang", "afrikaans");
-//        assertEquals(greet.language, "afrikaans");
-//    }
+    @Test
+    public void ShouldTestlangIsStoredinVar(){
+        Greet greet = new Greet();
+        CommandExtractor commandExtractor = new CommandExtractor("greet richard english");
+        assertEquals(commandExtractor.getLang(), "english");
+    }
+
+
     @Test
     public void shouldTestGreetedForNameLength(){
         Greet greet = new Greet();

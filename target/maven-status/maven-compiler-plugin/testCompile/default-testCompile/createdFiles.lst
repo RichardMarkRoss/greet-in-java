@@ -1,3 +1,4 @@
-net/greet/JdbcTestConnection.class
 net/greet/GreetDataBaseTest.class
+net/greet/TestCommandExtractor.class
+net/greet/JdbcTestConnection.class
 net/greet/TestUserInDataBase.class

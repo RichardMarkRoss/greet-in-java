@@ -1,5 +1,8 @@
-net/greet/Main.class
-net/greet/Greet.class
-net/greet/DataBaseMig.class
+net/greet/Database/DataBaseMig.class
+net/greet/enums/Languages.class
 net/greet/GreetInterface.class
-net/greet/GreetDataBase.class
+net/greet/CommandExecutor.class
+net/greet/Main.class
+net/greet/CommandExtractor.class
+net/greet/GreetMap/Greet.class
+net/greet/Database/GreetDataBase.class

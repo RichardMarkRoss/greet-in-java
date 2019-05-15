@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner insert = new Scanner(System.in);
-
+        CommandExecutor executor = new CommandExecutor();
         System.out.println("type help for more commands");
         String userInput = "";
 
@@ -14,9 +14,7 @@ public class Main {
             userInput = insert.nextLine();
 
             CommandExtractor extractor = new CommandExtractor(userInput);
-            CommandExecutor executor = new CommandExecutor(extractor);
-            executor.extractor();
-
+            executor.execute(extractor);
         }
         System.out.println("Thank you for your time!");
     }
