@@ -16,7 +16,18 @@ public class TestCommandExtractor {
             ex.printStackTrace();
         }
     }
+    @Test
+    public void ShouldTestElements() {
+        try {
+            CommandExtractor commandExtractor = new CommandExtractor("greet richard english");
 
+            assertEquals(commandExtractor.getName(), "richard");
+            assertEquals(commandExtractor.getLang(), "english");
+            assertEquals(commandExtractor.getCommandEx(), "greet");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     @Test
     public void ShouldTestIfLanguageIsStored(){
         try {
@@ -29,7 +40,7 @@ public class TestCommandExtractor {
     @Test
     public void ShouldTestIfCommandIsStored(){
         try {
-            CommandExtractor commandExtractor = new CommandExtractor("greet tanbang afrikaans");
+            CommandExtractor commandExtractor = new CommandExtractor("greet tanbang");
             assertEquals(commandExtractor.getCommandEx(), "greet");
         }catch (Exception ex){
             ex.printStackTrace();

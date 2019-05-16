@@ -23,7 +23,7 @@ public class GreetTest {
     public void ShouldTestMapCounter() {
         Greet greet = new Greet();
         greet.greets("richard", Languages.english);
-        assertEquals(greet.counter(), "amount of user are : 1");
+        assertEquals(greet.counter(), "1");
     }
 
     @Test
@@ -45,7 +45,7 @@ public class GreetTest {
         Greet greet = new Greet();
         greet.greets("richard", Languages.english);
         greet.clear("richard");
-        assertEquals(greet.counter(), "amount of user are : 0");
+        assertEquals(greet.counter(), "0");
     }
     @Test
     public void ShouldTestlangIsStoredinVar(){
@@ -62,7 +62,7 @@ public class GreetTest {
         assertEquals(greet.help(), "greet- followed by the name and the language the user is to be greeted in,\n" +
                 "greeted- should display a list of all users that has been greeted and how many time each user has been greeted,\n" +
                 "greeted- followed by a username returns how many times that username have been greeted,\n" +
-                "counter- returns a count of how many unique users has been greeted,\n" +
+                "count- returns a count of how many unique users has been greeted,\n" +
                 "clear- deletes of all users greeted and the reset the greet counter to 0,\n" +
                 "clear- followed by a username delete the greet counter for the specified user and decrement the greet counter by 1,\n" +
                 "exit- exits the application,\n" +

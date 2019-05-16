@@ -30,4 +30,5 @@ public class CommandExtractor {
     public String getCommandEx() {return this.commandEx;}
     public String getName() {return this.name;}
     public String getLang() {return this.lang;}
+    public boolean hasName() {return !name.isEmpty();}
 }

@@ -1,0 +1,5 @@
+net/greet/GreetTest.class
+net/greet/TestCommandExtractor.class
+net/greet/GreetDataBaseTests.class
+net/greet/JdbcTestConnection.class
+net/greet/TestUserInDataBase.class

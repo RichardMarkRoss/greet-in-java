@@ -6,6 +6,10 @@ import net.greet.enums.Languages;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+* todo: remove all print stmnt
+*  fix clear without user
+* */
 public class Greet implements GreetInterface {
     Map<String, Integer> hash = new HashMap<String, Integer>();
     public String username = "";
@@ -37,25 +41,28 @@ public class Greet implements GreetInterface {
         try {
             hash.get(username).equals(username);
             int mapSize = hash.get(username);
-            System.out.println(username + " has been greeted: " + mapSize);
             return username + " has been greeted: " + mapSize;
         } catch (Exception e) {
-            e.printStackTrace();
+            return "Please insert valid username";
         }
-        return "";
     }
     @Override
     public String greetedAll(){
+        String userList = "";
         try {
-            for (HashMap.Entry<String, Integer> entry : hash.entrySet()) {
-                String key = entry.getKey();
-                int value = entry.getValue();
-             return key + " has been greeted " + value + " times";
+            if(!hash.isEmpty()) {
+                for (HashMap.Entry<String, Integer> entry : hash.entrySet()) {
+                    String key = entry.getKey();
+                    int value = entry.getValue();
+                    userList += key + " has been greeted " + value + " times";
+                }
+            }else{
+                return "Please greet a user";
             }
         }catch(Exception e){
-            e.printStackTrace();
+            return "";
         }
-        return "";
+        return userList;
     }
 
     @Override
@@ -63,12 +70,11 @@ public class Greet implements GreetInterface {
         String help = "greet- followed by the name and the language the user is to be greeted in,\n" +
                 "greeted- should display a list of all users that has been greeted and how many time each user has been greeted,\n" +
                 "greeted- followed by a username returns how many times that username have been greeted,\n" +
-                "counter- returns a count of how many unique users has been greeted,\n" +
+                "count- returns a count of how many unique users has been greeted,\n" +
                 "clear- deletes of all users greeted and the reset the greet counter to 0,\n" +
                 "clear- followed by a username delete the greet counter for the specified user and decrement the greet counter by 1,\n" +
                 "exit- exits the application,\n" +
                 "help- shows a user an overview of all possible commands.";
-        System.out.println(help);
         return help;
     }
 
@@ -76,17 +82,18 @@ public class Greet implements GreetInterface {
     public String counter() {
         int hashSize = hash.size();
         String counter = Integer.toString(hashSize);
-        return "amount of user are : " + counter;
+        return counter;
 
     }
 
     @Override
     public String clear(String username) {
-        if (username != "") {
+        if (!username.isEmpty()) {
             hash.remove(username);
+            return username + " has been deleted!";
         } else {
             hash.clear();
+            return "Map has been cleared!";
         }
-        return username + " has been deleted!";
     }
 }

@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class TestUserInDataBase {
     Connection conn;
-
+//todo: test greeted, greeted + name
     @BeforeEach
     public void cleanUpTables() {
         try {

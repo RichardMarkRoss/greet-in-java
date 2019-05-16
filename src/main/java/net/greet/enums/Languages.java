@@ -4,7 +4,7 @@ public enum Languages {
     english("Hello, "),
     afrikaans("Goeie dag, "),
     xhosa("Molo, "),
-    american("sup bro, ");
+    american("sup, ");
 
     String action;
 

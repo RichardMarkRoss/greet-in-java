@@ -15,6 +15,7 @@ public class GreetDataBase implements GreetInterface {
     final String SELECT_USER_SQL = "SELECT username, counter FROM multiple_user WHERE username = ?";
     final String SELECT_ALL_SQL = "SELECT username, counter FROM multiple_user";
     final String DELETE_USER_SQL = "DELETE FROM multiple_user WHERE username = ?";
+    final String DELETE_ALL_SQL = "DELETE FROM multiple_user";
     final String COUNT_ALL_SQL = "SELECT count(*) FROM multiple_user";
 
     Connection conn;
@@ -24,6 +25,7 @@ public class GreetDataBase implements GreetInterface {
     PreparedStatement psUpdateUser;
     PreparedStatement psSelectUser;
     PreparedStatement psDeleteUser;
+    PreparedStatement psDeleteAll;
     PreparedStatement psCountAll;
 
     public GreetDataBase() {
@@ -35,6 +37,7 @@ public class GreetDataBase implements GreetInterface {
             psUpdateUser = conn.prepareStatement(UPDATE_USER_SQL);
             psSelectUser = conn.prepareStatement(SELECT_USER_SQL);
             psDeleteUser = conn.prepareStatement(DELETE_USER_SQL);
+            psDeleteAll = conn.prepareStatement(DELETE_ALL_SQL);
             psCountAll = conn.prepareStatement(COUNT_ALL_SQL);
         } catch(Exception ex) {
             ex.printStackTrace();
@@ -81,28 +84,33 @@ public class GreetDataBase implements GreetInterface {
                 return username + " has not been greeted.";
             }
         } catch (SQLException ex) {
-                ex.printStackTrace();
+                return "Please greet valid user";
         }
-        return "";
     }
 
     @Override
     public String greetedAll() {
-        String holder = "";
+        String userList = "Please greet a users";
         try {
+            ResultSet rs = psCountAll.executeQuery();
+            rs.next();
+            int counter = rs.getInt(1);
+            if(counter != 0){
+                userList = "";
+            }
             ResultSet counts = psSelectAll.executeQuery();
             while(counts.next()) {
-                return "User " + counts.getString("username") + " has been greeted " + counts.getInt("counter") + " time/s.";
+                userList += "User " + counts.getString("username") + " has been greeted " + counts.getInt("counter") + " time/s.\n";
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return null;
+        return userList;
     }
 
     @Override
     public String counter() {
-        String result = "";
+        String result;
         try {
 
             ResultSet rs = psCountAll.executeQuery();
@@ -112,24 +120,25 @@ public class GreetDataBase implements GreetInterface {
                 result = Integer.toString(counter);
 
         } catch (SQLException ex) {
-
-            ex.printStackTrace();
+            return "please greet a user";
         }
         return result;
     }
 
     @Override
     public String clear(String user) {
-        String holder = "";
         try {
             psSelectUser.setString(1, user);
             ResultSet counts = psSelectUser.executeQuery();
-            if(counts.next()){
-                psDeleteUser.setString(1, user);
-                psDeleteUser.execute();
-                return user + " has been deleted";
-            } else {
-                return "User "+ user + " does not exist";
+            if(!user.isEmpty()) {
+                if (counts.next()) {
+                    psDeleteUser.setString(1, user);
+                    psDeleteUser.execute();
+                    return user + " has been deleted";
+                }
+            }else{
+                psDeleteAll.execute();
+                return "Map has been cleared!";
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -142,12 +151,11 @@ public class GreetDataBase implements GreetInterface {
         String help = "greet- followed by the name and the language the user is to be greeted in,\n" +
                 "greeted- should display a list of all users that has been greeted and how many time each user has been greeted,\n" +
                 "greeted- followed by a username returns how many times that username have been greeted,\n" +
-                "counter- returns a count of how many unique users has been greeted,\n" +
+                "count- returns a count of how many unique users has been greeted,\n" +
                 "clear- deletes of all users greeted and the reset the greet counter to 0,\n" +
                 "clear- followed by a username delete the greet counter for the specified user and decrement the greet counter by 1,\n" +
                 "exit- exits the application,\n" +
                 "help- shows a user an overview of all possible commands.";
-        System.out.println(help);
         return help;
     }
 }
