@@ -68,5 +68,25 @@ public class GreetTest {
                 "exit- exits the application,\n" +
                 "help- shows a user an overview of all possible commands.");
     }
+    @Test
+    public void ShouldTestRemoveAllName() {
+        Greet greet = new Greet();
+        greet.greets("richard", Languages.english);
+        greet.greets("richard", Languages.english);
+        greet.greets("richard", Languages.english);
+        greet.greets("tom", Languages.english);
+        greet.clear("");
+        assertEquals(greet.counter(), "0");
+    }
 
+    @Test
+    public void ShouldTestGreetedEmptymap() {
+        Greet greet = new Greet();
+        greet.greets("richard", Languages.english);
+        greet.greets("richard", Languages.english);
+        greet.greets("richard", Languages.english);
+        greet.greets("tom", Languages.english);
+        greet.clear("");
+        assertEquals(greet.greetedAll(), "Please greet a user");
+    }
 }
